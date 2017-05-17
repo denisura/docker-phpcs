@@ -2,8 +2,8 @@ FROM denisura/composer
 MAINTAINER Denis Uraganov <github@uraganov.net>
 
 RUN echo "phar.readonly = 0" >> /usr/local/etc/php/php.ini
-
-RUN composer create-project "squizlabs/php_codesniffer=2.0.*@dev"
+RUN composer self-update
+RUN composer create-project --no-dev "squizlabs/php_codesniffer=3.0.*@dev"
 RUN php php_codesniffer/scripts/build-phar.php
 RUN chmod +x *.phar
 
